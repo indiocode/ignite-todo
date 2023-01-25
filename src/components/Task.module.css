@@ -91,7 +91,7 @@
 	position: absolute;
 	display: none;
 	margin-top: -0.15rem;
-	margin-left: 0.1rem;
+	margin-left: 0.05rem;
 }
 
 .checkItem input:checked ~ .checkmark:after {
