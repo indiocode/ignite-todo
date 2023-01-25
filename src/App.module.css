@@ -42,8 +42,13 @@
 	transition: background 0.1s;
 }
 
-.form button:hover {
+.form button[type='submit']:not(:disabled):hover {
 	background: var(--blue);
+}
+
+.form button[type='submit']:disabled {
+	opacity: 0.8;
+	cursor: not-allowed;
 }
 
 .taskListContainer {
