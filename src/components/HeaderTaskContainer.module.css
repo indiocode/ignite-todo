@@ -1,0 +1,14 @@
+.container {
+	color: var(--purple);
+	display: flex;
+	justify-content: space-between;
+	font-size: 0.875rem;
+	font-weight: 700;
+}
+
+.container span {
+	color: var(--gray-100);
+	background: var(--gray-400);
+	padding: 0.125rem 0.5rem;
+	border-radius: 999px;
+}

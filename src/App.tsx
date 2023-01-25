@@ -10,6 +10,7 @@ import { Task } from './components/Task';
 import { ITask } from './types/Task';
 import { tasks } from './data/TaskList';
 import { NoContent } from './components/NoContent';
+import { HeaderTaskContainer } from './components/HeaderTaskContainer';
 
 export function App() {
 	const [taskList, setTaskList] = useState<ITask[]>(tasks);
@@ -54,11 +55,6 @@ export function App() {
 	const isNewTaskTextEmpty = !newTaskText;
 	const existTasks = taskList.length > 0;
 
-	const taskIsCompletedCount = taskList.reduce(
-		(prev, curr) => (curr.isCompleted ? prev + 1 : prev),
-		0,
-	);
-
 	return (
 		<Fragment>
 			<Header />
@@ -77,19 +73,8 @@ export function App() {
 				</form>
 
 				<main className={styles.taskListContainer}>
-					<div className={styles.taskListContainerHeader}>
-						<div>
-							Tarefas criadas <span>{existTasks ? taskList.length : 0}</span>
-						</div>
-						<div>
-							Concluídas{' '}
-							<span>
-								{existTasks
-									? `${taskIsCompletedCount} de ${taskList.length}`
-									: 0}
-							</span>
-						</div>
-					</div>
+					<HeaderTaskContainer taskList={taskList} />
+
 					<div className={styles.taskList}>
 						{existTasks ? (
 							taskList.map((task) => (

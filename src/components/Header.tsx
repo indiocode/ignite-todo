@@ -4,7 +4,7 @@ import RocketLogo from '~/assets/rocket-logo.svg';
 
 export function Header() {
 	return (
-		<header className={styles.header}>
+		<header className={styles.container}>
 			<img src={RocketLogo} alt="Logotipo do Todo" />
 			<h1>
 				<span>to</span>

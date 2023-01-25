@@ -17,8 +17,12 @@ export function Task({ onDeleleTask, onToggleCompleteTask, task }: ITaskProps) {
 		onToggleCompleteTask(task);
 	}
 
+	const classNameTitle: string = task.isCompleted
+		? styles.taskTitleIsCompleted
+		: styles.taskTitle;
+
 	return (
-		<div className={styles.task}>
+		<div className={styles.container}>
 			<div>
 				<label className={styles.checkItem}>
 					<input
@@ -28,12 +32,7 @@ export function Task({ onDeleleTask, onToggleCompleteTask, task }: ITaskProps) {
 					/>
 					<span className={styles.checkmark}></span>
 				</label>
-				<p
-					className={
-						task.isCompleted ? styles.taskTitleIsCompleted : styles.taskTitle
-					}>
-					{task.title}
-				</p>
+				<p className={classNameTitle}>{task.title}</p>
 			</div>
 			<button onClick={handleDeleteTask}>
 				<Trash size={18} />
