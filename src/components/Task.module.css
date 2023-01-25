@@ -1,0 +1,32 @@
+.task {
+	width: 100%;
+	background: var(--gray-500);
+	padding: 1rem;
+	box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.06);
+	border-radius: 8px;
+	border: 1px solid var(--gray-400);
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	gap: 1.125rem;
+}
+
+.task button {
+	background: transparent;
+	border: 0;
+	color: var(--gray-300);
+}
+
+.task > div {
+	gap: 0.75rem;
+	display: flex;
+	align-items: center;
+}
+
+/* .task > div input[type='checkbox'] {
+} */
+
+.task > div p {
+	font-size: 0.875rem;
+	font-weight: 400;
+}
