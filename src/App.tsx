@@ -109,7 +109,7 @@ export function App() {
 					</div>
 				</main>
 			</Container>
-			<ToastContainer theme="colored" />
+			<ToastContainer theme="colored" autoClose={1500} />
 		</Fragment>
 	);
 }
