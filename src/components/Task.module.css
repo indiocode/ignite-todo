@@ -90,6 +90,8 @@
 	content: '';
 	position: absolute;
 	display: none;
+	margin-top: -0.15rem;
+	margin-left: 0.1rem;
 }
 
 .checkItem input:checked ~ .checkmark:after {
@@ -100,7 +102,7 @@
 	width: 0.2rem;
 	height: 0.5rem;
 	border: solid white;
-	border-width: 0 0.2rem 0.2rem 0;
+	border-width: 0 0.15rem 0.15rem 0;
 	-webkit-transform: rotate(45deg);
 	-ms-transform: rotate(45deg);
 	transform: rotate(45deg);

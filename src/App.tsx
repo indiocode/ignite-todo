@@ -5,6 +5,26 @@ import { Header } from './components/Header';
 import './global.css';
 import styles from './App.module.css';
 import { Task } from './components/Task';
+import { ITask } from './types/Task';
+import { v4 as uuidv4 } from 'uuid';
+
+const taskList: ITask[] = [
+	{
+		id: uuidv4(),
+		title: 'Do the dishes',
+		isCompleted: false,
+	},
+	{
+		id: uuidv4(),
+		title: 'Do the drinks',
+		isCompleted: true,
+	},
+	{
+		id: uuidv4(),
+		title: 'Do the food',
+		isCompleted: false,
+	},
+];
 
 export function App() {
 	return (
@@ -29,9 +49,13 @@ export function App() {
 						</div>
 					</div>
 					<div className={styles.taskList}>
-						<Task />
-						<Task />
-						<Task />
+						{taskList.map((task) => (
+							<Task
+								key={task.id}
+								title={task.title}
+								isCompleted={task.isCompleted}
+							/>
+						))}
 					</div>
 				</main>
 			</Container>

@@ -1,18 +1,16 @@
 import { Trash } from 'phosphor-react';
+import { ITask } from '~/types/Task';
 import styles from './Task.module.css';
 
-export function Task() {
+export function Task({ title, isCompleted }: ITask) {
 	return (
 		<div className={styles.task}>
 			<div>
 				<label className={styles.checkItem}>
-					<input type="checkbox" />
+					<input type="checkbox" checked={isCompleted} />
 					<span className={styles.checkmark}></span>
 				</label>
-				<p>
-					Integer urna interdum massa libero auctor neque turpis turpis semper.
-					Duis vel sed fames integer.
-				</p>
+				<p>{title}</p>
 			</div>
 			<button>
 				<Trash size={18} />
