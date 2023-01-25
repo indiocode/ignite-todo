@@ -28,7 +28,12 @@ export function Task({ onDeleleTask, onToggleCompleteTask, task }: ITaskProps) {
 					/>
 					<span className={styles.checkmark}></span>
 				</label>
-				<p>{task.title}</p>
+				<p
+					className={
+						task.isCompleted ? styles.taskTitleIsCompleted : styles.taskTitle
+					}>
+					{task.title}
+				</p>
 			</div>
 			<button onClick={handleDeleteTask}>
 				<Trash size={18} />

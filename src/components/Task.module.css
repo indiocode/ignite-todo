@@ -35,7 +35,15 @@
 	align-items: flex-start;
 }
 
-.task > div p {
+.taskTitle {
+	font-size: 0.875rem;
+	font-weight: 400;
+	word-break: break-all;
+}
+
+.taskTitleIsCompleted {
+	text-decoration: line-through;
+	color: var(--gray-300);
 	font-size: 0.875rem;
 	font-weight: 400;
 	word-break: break-all;

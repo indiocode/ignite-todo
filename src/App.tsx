@@ -1,12 +1,13 @@
+import './global.css';
+import styles from './App.module.css';
+
 import { ChangeEvent, FormEvent, Fragment, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { PlusCircle } from 'phosphor-react';
 import { Container } from './components/Container';
 import { Header } from './components/Header';
-import './global.css';
-import styles from './App.module.css';
 import { Task } from './components/Task';
 import { ITask } from './types/Task';
-import { v4 as uuidv4 } from 'uuid';
 import { tasks } from './data/TaskList';
 
 export function App() {
@@ -50,6 +51,7 @@ export function App() {
 	}
 
 	const isNewTaskTextEmpty = !newTaskText;
+	const existTasks = taskList.length > 0;
 
 	const taskIsCompletedCount = taskList.reduce(
 		(prev, curr) => (curr.isCompleted ? prev + 1 : prev),
@@ -76,13 +78,12 @@ export function App() {
 				<main className={styles.taskListContainer}>
 					<div className={styles.taskListContainerHeader}>
 						<div>
-							Tarefas criadas{' '}
-							<span>{taskList.length > 0 ? taskList.length : 0}</span>
+							Tarefas criadas <span>{existTasks ? taskList.length : 0}</span>
 						</div>
 						<div>
 							Concluídas{' '}
 							<span>
-								{taskList.length > 0
+								{existTasks
 									? `${taskIsCompletedCount} de ${taskList.length}`
 									: 0}
 							</span>
