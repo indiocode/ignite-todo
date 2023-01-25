@@ -1,5 +1,5 @@
 import { Trash } from 'phosphor-react';
-import { ITask } from '~/types/Task';
+import { ITask } from '~/models/Task';
 import styles from './Task.module.css';
 
 interface ITaskProps {

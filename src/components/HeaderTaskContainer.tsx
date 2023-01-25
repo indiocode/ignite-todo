@@ -1,4 +1,4 @@
-import { ITask } from '~/types/Task';
+import { ITask } from '~/models/Task';
 import styles from './HeaderTaskContainer.module.css';
 
 interface IHeaderTaskContainerProps {

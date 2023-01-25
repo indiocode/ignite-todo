@@ -7,7 +7,7 @@ import { PlusCircle } from 'phosphor-react';
 import { Container } from './components/Container';
 import { Header } from './components/Header';
 import { Task } from './components/Task';
-import { ITask } from './types/Task';
+import { ITask } from './models/Task';
 import { tasks } from './data/TaskList';
 import { NoContent } from './components/NoContent';
 import { HeaderTaskContainer } from './components/HeaderTaskContainer';
