@@ -1,7 +1,5 @@
 import './global.css';
 import styles from './App.module.css';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 import { ChangeEvent, FormEvent, Fragment, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
@@ -23,51 +21,35 @@ export function App() {
 	}
 
 	function handleCreateNewTast(event: FormEvent) {
-		try {
-			event.preventDefault();
+		event.preventDefault();
 
-			if (newTaskText) {
-				const newTask: ITask = {
-					id: uuidv4(),
-					title: newTaskText,
-					isCompleted: false,
-				};
+		if (newTaskText) {
+			const newTask: ITask = {
+				id: uuidv4(),
+				title: newTaskText,
+				isCompleted: false,
+			};
 
-				setTaskList((prevTaskList) => [...prevTaskList, newTask]);
+			setTaskList((prevTaskList) => [...prevTaskList, newTask]);
 
-				setNewTaskText('');
-
-				toast.success('Tarefa adicionada com sucesso');
-			}
-		} catch (error) {
-			toast.error('Houve um erro ao tentar adicionar tarefa');
+			setNewTaskText('');
 		}
 	}
 
 	function deleteTask(task: ITask) {
-		try {
-			setTaskList((prevTaskList) =>
-				prevTaskList.filter((item) => item.id !== task.id),
-			);
-			toast.success('Tarefa removida com sucesso');
-		} catch (error) {
-			toast.error('Houve um erro ao tentar remover tarefa');
-		}
+		setTaskList((prevTaskList) =>
+			prevTaskList.filter((item) => item.id !== task.id),
+		);
 	}
 
 	function toggleCompleteTask(task: ITask) {
-		try {
-			setTaskList((prevTaskList) =>
-				prevTaskList.map((item) =>
-					item.id === task.id
-						? { ...item, isCompleted: !item.isCompleted }
-						: item,
-				),
-			);
-			toast.success('Tarefa concluida com sucesso');
-		} catch (error) {
-			toast.error('Houve um erro ao tentar concluir tarefa');
-		}
+		setTaskList((prevTaskList) =>
+			prevTaskList.map((item) =>
+				item.id === task.id
+					? { ...item, isCompleted: !item.isCompleted }
+					: item,
+			),
+		);
 	}
 
 	const isNewTaskTextEmpty = !newTaskText;
@@ -109,7 +91,6 @@ export function App() {
 					</div>
 				</main>
 			</Container>
-			<ToastContainer theme="colored" autoClose={1500} />
 		</Fragment>
 	);
 }
