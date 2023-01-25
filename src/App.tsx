@@ -9,6 +9,7 @@ import { Header } from './components/Header';
 import { Task } from './components/Task';
 import { ITask } from './types/Task';
 import { tasks } from './data/TaskList';
+import { NoContent } from './components/NoContent';
 
 export function App() {
 	const [taskList, setTaskList] = useState<ITask[]>(tasks);
@@ -90,14 +91,18 @@ export function App() {
 						</div>
 					</div>
 					<div className={styles.taskList}>
-						{taskList.map((task) => (
-							<Task
-								key={task.id}
-								task={task}
-								onDeleleTask={deleteTask}
-								onToggleCompleteTask={toggleCompleteTask}
-							/>
-						))}
+						{existTasks ? (
+							taskList.map((task) => (
+								<Task
+									key={task.id}
+									task={task}
+									onDeleleTask={deleteTask}
+									onToggleCompleteTask={toggleCompleteTask}
+								/>
+							))
+						) : (
+							<NoContent />
+						)}
 					</div>
 				</main>
 			</Container>
