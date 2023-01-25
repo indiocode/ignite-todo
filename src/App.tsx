@@ -31,6 +31,7 @@ export function App() {
 					<div className={styles.taskList}>
 						<Task />
 						<Task />
+						<Task />
 					</div>
 				</main>
 			</Container>

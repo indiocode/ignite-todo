@@ -5,14 +5,17 @@ export function Task() {
 	return (
 		<div className={styles.task}>
 			<div>
-				<input type="checkbox" name="" id="" />
+				<label className={styles.checkItem}>
+					<input type="checkbox" />
+					<span className={styles.checkmark}></span>
+				</label>
 				<p>
 					Integer urna interdum massa libero auctor neque turpis turpis semper.
 					Duis vel sed fames integer.
 				</p>
 			</div>
 			<button>
-				<Trash size={14} />
+				<Trash size={18} />
 			</button>
 		</div>
 	);
