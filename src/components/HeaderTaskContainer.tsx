@@ -1,19 +1,17 @@
-import { ITask } from '~/models/Task';
+import { useContext } from 'react';
+import { TasksContext } from '~/contexts/TasksContenxt';
 import styles from './HeaderTaskContainer.module.css';
 
-interface IHeaderTaskContainerProps {
-	taskList: ITask[];
-}
-
-export function HeaderTaskContainer({ taskList }: IHeaderTaskContainerProps) {
-	const taskIsCompletedCount = taskList.reduce(
-		(prev, curr) => (curr.isCompleted ? prev + 1 : prev),
+export function HeaderTaskContainer() {
+	const { tasks } = useContext(TasksContext);
+	const taskIsCompletedCount = tasks.reduce(
+		(prev, curr) => (curr?.isCompleted ? prev + 1 : prev),
 		0,
 	);
 
-	const createdTaskCount: number = taskList.length > 0 ? taskList.length : 0;
+	const createdTaskCount: number = tasks.length > 0 ? tasks.length : 0;
 	const completedFromCreatedTasks: string | number =
-		taskList.length > 0 ? `${taskIsCompletedCount} de ${taskList.length}` : 0;
+		tasks.length > 0 ? `${taskIsCompletedCount} de ${tasks.length}` : 0;
 
 	return (
 		<div className={styles.container}>

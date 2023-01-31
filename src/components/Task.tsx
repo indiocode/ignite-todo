@@ -1,23 +1,24 @@
 import { Trash } from 'phosphor-react';
+import { useContext } from 'react';
+import { TasksContext } from '~/contexts/TasksContenxt';
 import { ITask } from '~/models/Task';
 import styles from './Task.module.css';
 
 interface ITaskProps {
 	task: ITask;
-	onDeleleTask: (task: ITask) => void;
-	onToggleCompleteTask: (task: ITask) => void;
 }
 
-export function Task({ onDeleleTask, onToggleCompleteTask, task }: ITaskProps) {
+export function Task({ task }: ITaskProps) {
+	const { removeTask, toggleCompleteTask } = useContext(TasksContext);
 	function handleDeleteTask() {
-		onDeleleTask(task);
+		removeTask(task);
 	}
 
 	function handleToggleCompleteTask() {
-		onToggleCompleteTask(task);
+		toggleCompleteTask(task);
 	}
 
-	const classNameTitle: string = task.isCompleted
+	const classNameTitle: string = task?.isCompleted
 		? styles.taskTitleIsCompleted
 		: styles.taskTitle;
 
@@ -28,11 +29,11 @@ export function Task({ onDeleleTask, onToggleCompleteTask, task }: ITaskProps) {
 					<input
 						type="checkbox"
 						onChange={handleToggleCompleteTask}
-						checked={task.isCompleted}
+						checked={task?.isCompleted}
 					/>
 					<span className={styles.checkmark}></span>
 				</label>
-				<p className={classNameTitle}>{task.title}</p>
+				<p className={classNameTitle}>{task?.title}</p>
 			</div>
 			<button onClick={handleDeleteTask}>
 				<Trash size={18} />
