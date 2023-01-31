@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { createContext, ReactNode, useReducer } from 'react';
+import { createContext, ReactNode, useEffect, useReducer } from 'react';
 import { ITask } from '~/models/Task';
 import { tasksReducer } from '~/reducers/tasks/reducer';
 import { v4 as uuidv4 } from 'uuid';
@@ -26,21 +26,16 @@ export function TasksContextProvider({ children }: TasksProviderProps) {
 	const [tasksState, dispatch] = useReducer(
 		tasksReducer,
 		{
-			tasks: [
-				{
-					id: uuidv4(),
-					title: 'Task 1',
-					isCompleted: true,
-				},
-				{
-					id: uuidv4(),
-					title: 'Task 2',
-					isCompleted: false,
-				},
-			],
+			tasks: [],
 		},
 		(initialValue) => {
-			return initialValue;
+			const storedStateAsJSON = localStorage.getItem(
+				'@IGNITE_TODO:TASKS_STATE:1.0.0',
+			);
+
+			if (!storedStateAsJSON) return initialValue;
+
+			return JSON.parse(storedStateAsJSON);
 		},
 	);
 
@@ -63,6 +58,11 @@ export function TasksContextProvider({ children }: TasksProviderProps) {
 	function toggleCompleteTask(task: ITask) {
 		dispatch(toggleCompleteTaskAction(task));
 	}
+
+	useEffect(() => {
+		const stateJSON = JSON.stringify(tasksState);
+		localStorage.setItem('@IGNITE_TODO:TASKS_STATE:1.0.0', stateJSON);
+	}, [tasksState]);
 
 	return (
 		<TasksContext.Provider
