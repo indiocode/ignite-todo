@@ -1,8 +1,10 @@
-import styles from './Header.module.css';
+import type { ReactElement } from 'react';
 
 import RocketLogo from '~/assets/rocket-logo.svg';
 
-export function Header() {
+import styles from './Header.module.css';
+
+export function Header(): ReactElement {
 	return (
 		<header className={styles.container}>
 			<img src={RocketLogo} alt="Logotipo do Todo" />

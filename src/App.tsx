@@ -1,14 +1,15 @@
-import './global.css';
-import styles from './App.module.css';
+import type { ReactElement } from 'react';
 
+import styles from './App.module.css';
 import { Container } from './components/Container';
+import { Form } from './components/Form';
 import { Header } from './components/Header';
 import { HeaderTaskContainer } from './components/HeaderTaskContainer';
-import { TasksContextProvider } from './contexts/TasksContenxt';
-import { Form } from './components/Form';
 import { TaskList } from './components/TaskList';
+import { TasksContextProvider } from './contexts/TasksContenxt';
+import './global.css';
 
-export function App() {
+export function App(): ReactElement {
 	return (
 		<TasksContextProvider>
 			<Header />

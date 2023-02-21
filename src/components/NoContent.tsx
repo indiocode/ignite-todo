@@ -1,7 +1,10 @@
+import type { ReactElement } from 'react';
+
 import Clipboard from '~/assets/clipboard.svg';
+
 import styles from './NoContent.module.css';
 
-export function NoContent() {
+export function NoContent(): ReactElement {
 	return (
 		<div className={styles.container}>
 			<img src={Clipboard} />

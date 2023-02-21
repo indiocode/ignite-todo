@@ -1,20 +1,23 @@
 import { Trash } from 'phosphor-react';
+import type { ReactElement } from 'react';
 import { useContext } from 'react';
+
 import { TasksContext } from '~/contexts/TasksContenxt';
-import { ITask } from '~/models/Task';
+import type { ITask } from '~/models/Task';
+
 import styles from './Task.module.css';
 
 interface ITaskProps {
 	task: ITask;
 }
 
-export function Task({ task }: ITaskProps) {
+export function Task({ task }: ITaskProps): ReactElement {
 	const { removeTask, toggleCompleteTask } = useContext(TasksContext);
-	function handleDeleteTask() {
+	function handleDeleteTask(): void {
 		removeTask(task);
 	}
 
-	function handleToggleCompleteTask() {
+	function handleToggleCompleteTask(): void {
 		toggleCompleteTask(task);
 	}
 

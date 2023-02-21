@@ -1,11 +1,12 @@
-import { ITask } from '~/models/Task';
+import type { ITask } from '~/models/Task';
+
 import { ActionTypes } from './action';
 
 interface TaskState {
 	tasks: ITask[];
 }
 
-interface Action {
+export interface Action {
 	type: ActionTypes;
 	payload: {
 		task: ITask;

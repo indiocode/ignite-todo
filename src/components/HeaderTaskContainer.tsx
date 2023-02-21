@@ -1,8 +1,11 @@
+import type { ReactElement } from 'react';
 import { useContext } from 'react';
+
 import { TasksContext } from '~/contexts/TasksContenxt';
+
 import styles from './HeaderTaskContainer.module.css';
 
-export function HeaderTaskContainer() {
+export function HeaderTaskContainer(): ReactElement {
 	const { tasks } = useContext(TasksContext);
 	const taskIsCompletedCount = tasks.reduce(
 		(prev, curr) => (curr?.isCompleted ? prev + 1 : prev),

@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
-import { ITask } from '~/models/Task';
+
+import type { ITask } from '~/models/Task';
 
 export const tasks: ITask[] = [
 	{

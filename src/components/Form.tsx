@@ -1,18 +1,21 @@
-import { ChangeEvent, FormEvent, useContext, useState } from 'react';
-import { TasksContext } from '~/contexts/TasksContenxt';
-import { ITask } from '~/models/Task';
 import { PlusCircle } from 'phosphor-react';
+import type { ChangeEvent, FormEvent, ReactElement } from 'react';
+import { useContext, useState } from 'react';
+
+import { TasksContext } from '~/contexts/TasksContenxt';
+import type { ITask } from '~/models/Task';
+
 import styles from './Form.module.css';
 
-export function Form() {
+export function Form(): ReactElement {
 	const { addNewTask } = useContext(TasksContext);
 	const [newTaskText, setNewTaskText] = useState<string>('');
 
-	function handleNewTastText(event: ChangeEvent<HTMLInputElement>) {
+	function handleNewTastText(event: ChangeEvent<HTMLInputElement>): void {
 		setNewTaskText(event.target.value);
 	}
 
-	function handleCreateNewTast(event: FormEvent) {
+	function handleCreateNewTast(event: FormEvent): void {
 		event.preventDefault();
 
 		if (newTaskText) {

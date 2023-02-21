@@ -1,13 +1,15 @@
 /* eslint-disable no-unused-vars */
-import { createContext, ReactNode, useEffect, useReducer } from 'react';
-import { ITask } from '~/models/Task';
-import { tasksReducer } from '~/reducers/tasks/reducer';
+import type { ReactElement, ReactNode } from 'react';
+import { createContext, useEffect, useReducer } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+
+import type { ITask } from '~/models/Task';
 import {
 	addNewTaskAction,
 	deleteTaskAction,
 	toggleCompleteTaskAction,
 } from '~/reducers/tasks/action';
+import { tasksReducer } from '~/reducers/tasks/reducer';
 
 interface TasksContextTypes {
 	tasks: ITask[];
@@ -22,7 +24,9 @@ interface TasksProviderProps {
 	children: ReactNode;
 }
 
-export function TasksContextProvider({ children }: TasksProviderProps) {
+export function TasksContextProvider({
+	children,
+}: TasksProviderProps): ReactElement {
 	const [tasksState, dispatch] = useReducer(
 		tasksReducer,
 		{
@@ -41,7 +45,7 @@ export function TasksContextProvider({ children }: TasksProviderProps) {
 
 	const { tasks } = tasksState;
 
-	function addNewTask(task: ITask) {
+	function addNewTask(task: ITask): void {
 		const newTask: ITask = {
 			id: uuidv4(),
 			title: task.title,
@@ -51,11 +55,11 @@ export function TasksContextProvider({ children }: TasksProviderProps) {
 		dispatch(addNewTaskAction(newTask));
 	}
 
-	function removeTask(task: ITask) {
+	function removeTask(task: ITask): void {
 		dispatch(deleteTaskAction(task));
 	}
 
-	function toggleCompleteTask(task: ITask) {
+	function toggleCompleteTask(task: ITask): void {
 		dispatch(toggleCompleteTaskAction(task));
 	}
 

@@ -1,5 +1,7 @@
 /* eslint-disable no-unused-vars */
-import { ITask } from '~/models/Task';
+import type { ITask } from '~/models/Task';
+
+import type { Action } from './reducer';
 
 export enum ActionTypes {
 	ADD_NEW_TASK = 'ADD_NEW_TASK',
@@ -7,7 +9,7 @@ export enum ActionTypes {
 	TOGGLE_COMPLETE_TASK = 'TOGGLE_COMPLETE_TASK',
 }
 
-export function addNewTaskAction(task: ITask) {
+export function addNewTaskAction(task: ITask): Action {
 	return {
 		type: ActionTypes.ADD_NEW_TASK,
 		payload: {
@@ -16,7 +18,7 @@ export function addNewTaskAction(task: ITask) {
 	};
 }
 
-export function deleteTaskAction(task: ITask) {
+export function deleteTaskAction(task: ITask): Action {
 	return {
 		type: ActionTypes.DELETE_TASK,
 		payload: {
@@ -25,7 +27,7 @@ export function deleteTaskAction(task: ITask) {
 	};
 }
 
-export function toggleCompleteTaskAction(task: ITask) {
+export function toggleCompleteTaskAction(task: ITask): Action {
 	return {
 		type: ActionTypes.TOGGLE_COMPLETE_TASK,
 		payload: {
